@@ -8,6 +8,12 @@
             "email": "notfound.la2.asterios.tm@gmail.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Sensetivity/SMSFly"
+        }
+    ],
     "require": {
         "php": ">=5.4.16",
         "cakephp/cakephp": "~3.0"
