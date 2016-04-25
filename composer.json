@@ -1,0 +1,23 @@
+{
+    "name": "Sensetivity/SMSFly",
+    "description": "SMSFly plugin for CakePHP 3.x",
+    "type": "cakephp-plugin",
+    "require": {
+        "php": ">=5.4.16",
+        "cakephp/cakephp": "~3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "SMSFly\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SMSFly\\Test\\": "tests",
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+        }
+    }
+}
