@@ -1,7 +1,13 @@
 {
-    "name": "Sensetivity/SMSFly",
+    "name": "sensetivity/sms-fly-cakephp-3.x",
     "description": "SMSFly plugin for CakePHP 3.x",
     "type": "cakephp-plugin",
+    "authors": [
+        {
+            "name": "Mykola Pukhalskyi",
+            "email": "notfound.la2.asterios.tm@gmail.com"
+        }
+    ],
     "require": {
         "php": ">=5.4.16",
         "cakephp/cakephp": "~3.0"
