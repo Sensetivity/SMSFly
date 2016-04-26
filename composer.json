@@ -2,6 +2,7 @@
     "name": "sensetivity/sms-fly-cakephp-3.x",
     "description": "SMSFly plugin for CakePHP 3.x",
     "type": "cakephp-plugin",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Mykola Pukhalskyi",
