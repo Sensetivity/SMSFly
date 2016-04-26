@@ -191,6 +191,7 @@ class SMSFlyComponent extends Component
      * from CakePHP config file.
      *
      * @return void
+     * @throws Exception
      */
     protected function loadConfiguration()
     {
@@ -221,6 +222,7 @@ class SMSFlyComponent extends Component
      * @param string $msg
      *
      * @return void
+     * @throws Exception
      */
     protected function checkData($to, $msg)
     {
@@ -247,6 +249,7 @@ class SMSFlyComponent extends Component
      * @param array $to
      * @param string $msg
      *
+     * @throws Exception
      * @return void
      */
     protected function checkDataMany($to, $msg)
