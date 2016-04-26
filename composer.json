@@ -2,7 +2,7 @@
     "name": "sensetivity/sms-fly-cakephp-3.x",
     "description": "SMSFly plugin for CakePHP 3.x",
     "type": "cakephp-plugin",
-    "minimum-stability": "dev",
+    "minimum-stability": "1.0",
     "authors": [
         {
             "name": "Mykola Pukhalskyi",
@@ -11,7 +11,7 @@
     ],
     "repositories": [
         {
-            "type": "vcs",
+            "type": "github",
             "url": "https://github.com/Sensetivity/SMSFly"
         }
     ],
@@ -24,13 +24,13 @@
     },
     "autoload": {
         "psr-4": {
-            "SMSFly\\": "src"
+            "SMSFly\\": "./plugins/SMSFly/src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SMSFly\\Test\\": "tests",
-            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+            "SMSFly\\Test\\": "./plugins/SMSFly/src",
+            "Cake\\Test\\": "./plugins/SMSFly/src/tests"
         }
     }
 }
