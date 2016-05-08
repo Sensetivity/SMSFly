@@ -26,7 +26,7 @@ To use this plugin just load it on your controller
 // your controller
 
 $this->loadComponent('SMSFly.SMSFly', [
-    'username' => YOUR_USERNAME,
+    'username' => 'YOUR_USERNAME',
     'password' => 'YOUR_PASSWORD',
 ]);
 ```
