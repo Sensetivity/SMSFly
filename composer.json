@@ -1,5 +1,5 @@
 {
-    "name": "sensetivity/sms-fly-cakephp-3.x",
+    "name": "sensetivity/sms-fly",
     "description": "SMSFly plugin for CakePHP 3.x",
     "type": "cakephp-plugin",
     "minimum-stability": "dev",
