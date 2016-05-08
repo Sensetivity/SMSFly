@@ -10,34 +10,6 @@ use Cake\Utility\Xml;
 class SMSFlyComponent extends Component
 {
     /**
-     * Price per one SMS.
-     *
-     * @var float.
-     */
-    protected $price;
-
-    /**
-     * Username for auth
-     *
-     * @var string
-     */
-    protected $username;
-
-    /**
-     * Password for auth
-     *
-     * @var string
-     */
-    protected $password;
-
-    /**
-     * Alpha-name for showing "From: "
-     *
-     * @var string
-     */
-    protected $source;
-
-    /**
      * Client object
      *
      * @var \Cake\Network\Http\Client;
@@ -52,15 +24,28 @@ class SMSFlyComponent extends Component
     protected $balance;
 
     /**
+     * Default config
+     *
+     * @var array
+     */
+    protected $_defaultConfig = [
+        'source' => 'InfoCentr',
+        'price' => 0.247,
+        'username' => false,
+        'password' => false
+    ];
+
+    /**
      * Initialize properties.
      *
      * @param array $config The config data.
-     *
      * @return void
      */
     public function initialize(array $config)
     {
-        $this->loadConfiguration();
+        if (!$this->config('username') OR !$this->config('password')) {
+            throw new Exception('Missing Auth configuration for SMSFly');
+        }
 
         $this->http = new Client();
     }
@@ -86,7 +71,7 @@ class SMSFlyComponent extends Component
         $message = htmlspecialchars($message);
         $desc = htmlspecialchars($desc);
 
-        $source = (empty($source)) ? $this->source : $source;
+        $source = (empty($source)) ? $this->config('source') : $source;
 
         $xmlArray = [
             'request' => [
@@ -129,7 +114,7 @@ class SMSFlyComponent extends Component
         $message = htmlspecialchars($message);
         $desc = htmlspecialchars($desc);
 
-        $source = (empty($source)) ? $this->source : $source;
+        $source = (empty($source)) ? $this->config('source') : $source;
 
         $xmlArray = [
             'request' => [
@@ -183,36 +168,7 @@ class SMSFlyComponent extends Component
             $this->balance = $this->getBalance();
         }
 
-        return (int)floor($this->balance / $this->price);
-    }
-
-    /**
-     * Load configuration
-     * from CakePHP config file.
-     *
-     * @return void
-     * @throws Exception
-     */
-    protected function loadConfiguration()
-    {
-        $config = Configure::read("SMSFly");
-
-        if (is_null($config)) {
-            throw new Exception('Missing configuration for SMSFly');
-        }
-
-        if (is_null($config['API']) || !isset($config['API']['password']) || !isset($config['API']['username'])) {
-            throw new Exception('Missing Auth configuration for SMSFly');
-        }
-
-        if (!isset($config['API']['source']) || empty($config['API']['source'])) {
-            $this->source = 'InfoCentr';
-        }
-
-        $this->username = $config['API']['username'];
-        $this->password = $config['API']['password'];
-        $this->source = $config['API']['source'];
-        $this->price = $config['API']['price'];
+        return (int)floor($this->balance / $this->config('price'));
     }
 
     /**
@@ -222,7 +178,6 @@ class SMSFlyComponent extends Component
      * @param string $msg
      *
      * @return void
-     * @throws Exception
      */
     protected function checkData($to, $msg)
     {
@@ -249,7 +204,6 @@ class SMSFlyComponent extends Component
      * @param array $to
      * @param string $msg
      *
-     * @throws Exception
      * @return void
      */
     protected function checkDataMany($to, $msg)
@@ -283,8 +237,8 @@ class SMSFlyComponent extends Component
         $xml = Xml::build($xmlArray)->asXML();
         $response = $this->http->post('http://sms-fly.com/api/api.php', $xml, [
                 'auth' => [
-                    'username' => $this->username,
-                    'password' => $this->password,
+                    'username' => $this->config('username'),
+                    'password' => $this->config('password'),
                 ],
             ]
         );
