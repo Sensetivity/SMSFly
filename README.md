@@ -9,36 +9,26 @@ You can install this plugin into your CakePHP application using [composer](http:
 The recommended way to install composer packages is:
 
 ```
-composer require sensetivity/sms-fly-cakephp-3.x": "^1.0"
+composer require sensetivity/sms-fly": "^1.0.3"
 ```
 
 ### Step 2: Load plugin
 ```php
 // your config/bootstrap.php file
 
-Plugin::load('SMSFly', ['bootstrap' => true, 'routes' => false]);
+Plugin::load('SMSFly', ['bootstrap' => false, 'routes' => false]);
 
 ```
 
-### Step 3: Configure plugin
-After loading plugin you should set configuration
-```php
-// your /vendor/sensetivity/sms-fly-cakephp-3.x/config/bootstrap.php file
-
-Configure::write('SMSFly.API.username', 'Your_username');
-Configure::write('SMSFly.API.password', 'Your_password');
-Configure::write('SMSFly.API.price', 0.247);
-Configure::write('SMSFly.API.source', 'InfoCentr');
-
-```
-
-### Step 4: Usage
-When configuration is done you must load component.
-To do this just use on your controllers
+### Step 3: Usage & Configure
+To use this plugin just load it on your controller
 ```php
 // your controller
 
-$this->loadComponent('SMSFly.SMSFly');
+$this->loadComponent('SMSFly.SMSFly', [
+    'username' => YOUR_USERNAME,
+    'password' => 'YOUR_PASSWORD',
+]);
 ```
 
 After that you can use plugin. It`s easy,
