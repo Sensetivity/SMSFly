@@ -24,13 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SMSFly\\": "./plugins/SMSFly/src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "SMSFly\\Test\\": "./plugins/SMSFly/src",
-            "Cake\\Test\\": "./plugins/SMSFly/src/tests"
+            "Sensetivity\\SMSFly\\": "src"
         }
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace SMSFly\Controller\Component;
+namespace Sensetivity\SMSFly;
 
 use Cake\Controller\Component;
 use Cake\Core\Configure;
